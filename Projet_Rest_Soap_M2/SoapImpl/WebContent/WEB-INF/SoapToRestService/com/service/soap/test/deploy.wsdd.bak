@@ -1,0 +1,39 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SoapToRestService WSDL service -->
+
+  <service name="SoapToRest" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://test.soap.service.com"/>
+      <parameter name="wsdlServiceElement" value="SoapToRestService"/>
+      <parameter name="schemaQualified" value="http://test.soap.service.com"/>
+      <parameter name="wsdlServicePort" value="SoapToRest"/>
+      <parameter name="className" value="com.service.soap.test.SoapToRestSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="SoapToRest"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="auth" qname="operNS:auth" xmlns:operNS="http://test.soap.service.com" returnQName="retNS:authReturn" xmlns:retNS="http://test.soap.service.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:pseudoAuth" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mdp" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOut" qname="operNS:getOut" xmlns:operNS="http://test.soap.service.com" returnQName="retNS:getOutReturn" xmlns:retNS="http://test.soap.service.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:pseudoSupp" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:Pass" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="inscription" qname="operNS:inscription" xmlns:operNS="http://test.soap.service.com" returnQName="retNS:inscriptionReturn" xmlns:retNS="http://test.soap.service.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:pseudoInscrit" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mdpSend" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mdpVerification" xmlns:pns="http://test.soap.service.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getOut auth inscription"/>
+
+  </service>
+</deployment>

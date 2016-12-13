@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://test.soap.service.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://test.soap.service.com" xmlns:intf="http://test.soap.service.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://test.soap.service.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="auth">
+    <complexType>
+     <sequence>
+      <element name="pseudoAuth" type="xsd:string"/>
+      <element name="mdp" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="authResponse">
+    <complexType>
+     <sequence>
+      <element name="authReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOut">
+    <complexType>
+     <sequence>
+      <element name="pseudoSupp" type="xsd:string"/>
+      <element name="Pass" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOutResponse">
+    <complexType>
+     <sequence>
+      <element name="getOutReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inscription">
+    <complexType>
+     <sequence>
+      <element name="pseudoInscrit" type="xsd:string"/>
+      <element name="mdpSend" type="xsd:string"/>
+      <element name="mdpVerification" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inscriptionResponse">
+    <complexType>
+     <sequence>
+      <element name="inscriptionReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getOutRequest">
+
+      <wsdl:part element="impl:getOut" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="authRequest">
+
+      <wsdl:part element="impl:auth" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOutResponse">
+
+      <wsdl:part element="impl:getOutResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inscriptionResponse">
+
+      <wsdl:part element="impl:inscriptionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="authResponse">
+
+      <wsdl:part element="impl:authResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inscriptionRequest">
+
+      <wsdl:part element="impl:inscription" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SoapToRest">
+
+      <wsdl:operation name="auth">
+
+         <wsdl:input message="impl:authRequest" name="authRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:authResponse" name="authResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOut">
+
+         <wsdl:input message="impl:getOutRequest" name="getOutRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOutResponse" name="getOutResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inscription">
+
+         <wsdl:input message="impl:inscriptionRequest" name="inscriptionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:inscriptionResponse" name="inscriptionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SoapToRestSoapBinding" type="impl:SoapToRest">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="auth">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="authRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="authResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOut">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOutRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOutResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="inscription">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inscriptionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inscriptionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SoapToRestService">
+
+      <wsdl:port binding="impl:SoapToRestSoapBinding" name="SoapToRest">
+
+         <wsdlsoap:address location="http://localhost:8080/SoapImpl/services/SoapToRest"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
